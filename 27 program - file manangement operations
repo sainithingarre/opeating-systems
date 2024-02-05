@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    FILE *filePointer;
+    char fileName[] = "example.txt";
+    char dataToWrite[] = "Hello, File Management!";
+    char dataRead[100];
+
+    // Open file for writing
+    filePointer = fopen(fileName, "w");
+
+    if (filePointer == NULL) {
+        printf("Error opening file for writing.\n");
+        return 1;
+    }
+
+    // Write data to the file
+    fprintf(filePointer, "%s", dataToWrite);
+
+    // Close the file
+    fclose(filePointer);
+
+    // Open file for reading
+    filePointer = fopen(fileName, "r");
+
+    if (filePointer == NULL) {
+        printf("Error opening file for reading.\n");
+        return 1;
+    }
+
+    // Read data from the file
+    fscanf(filePointer, "%s", dataRead);
+
+    // Print the read data
+    printf("Data read from file: %s\n", dataRead);
+
+    // Close the file
+    fclose(filePointer);
+
+    return 0;
+}
